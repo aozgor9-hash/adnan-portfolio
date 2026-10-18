@@ -65,7 +65,7 @@ export const tools: { name: string; icon?: string }[] = [
  * `artist` doluysa butonun üstünde "Sanatçı — Parça" olarak görünür.
  */
 export const music: { src: string; title: string; artist?: string } = {
-  src: 'music/muzik.mp3',
+  src: 'music/MUSIC.mp3',
   title: 'Arka plan müziği',
 };
 
