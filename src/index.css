@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  background: #0c0c0c;
+  color-scheme: dark;
+}
+
+body {
+  font-family: 'Kanit', ui-sans-serif, system-ui, sans-serif;
+  color: #d7e2ea;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hero-heading {
+  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a:focus-visible {
+  outline: 2px solid #d7e2ea;
+  outline-offset: 4px;
+}
+
+/* Yer tutucu görsellerin hafif hareketleri */
+@keyframes tile-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-14px, 12px, 0) rotate(8deg); }
+}
+.tile-float { animation: tile-float 8s ease-in-out infinite; }
+
+@keyframes decor-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(4deg); }
+}
+.decor-bob { animation: decor-bob 6s ease-in-out infinite; }
+
+@keyframes decor-spin {
+  from { transform: rotateX(-24deg) rotateY(0deg); }
+  to { transform: rotateX(-24deg) rotateY(360deg); }
+}
+.decor-spin { animation: decor-spin 14s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tile-float, .decor-bob, .decor-spin { animation: none; }
+  html { scroll-behavior: auto !important; }
+}
+
+/* Portre arkasındaki RGB ışık. --lvl: müziğin bas seviyesi (0–1) */
+.ambient-glow {
+  animation: ambient-spin 32s linear infinite;
+  mix-blend-mode: screen;
+  transform: scale(calc(1 + var(--lvl) * 0.12));
+}
+.ambient-blob {
+  position: absolute;
+  width: 58%;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  opacity: calc(0.28 + var(--lvl) * 0.4);
+  animation: ambient-breathe 9s ease-in-out infinite;
+}
+.ambient-r {
+  left: 12%;
+  top: 18%;
+  background: radial-gradient(circle, rgba(255, 46, 99, 0.9) 0%, rgba(255, 46, 99, 0.25) 38%, transparent 68%);
+}
+.ambient-g {
+  right: 10%;
+  top: 22%;
+  background: radial-gradient(circle, rgba(46, 255, 170, 0.75) 0%, rgba(46, 255, 170, 0.2) 38%, transparent 68%);
+  animation-delay: -3s;
+}
+.ambient-b {
+  left: 22%;
+  bottom: 8%;
+  background: radial-gradient(circle, rgba(61, 120, 255, 0.95) 0%, rgba(61, 120, 255, 0.28) 38%, transparent 68%);
+  animation-delay: -6s;
+}
+@keyframes ambient-spin {
+  to { rotate: 360deg; }
+}
+@keyframes ambient-breathe {
+  0%, 100% { translate: 0 0; scale: 1; }
+  50% { translate: 4% -3%; scale: 1.12; }
+}
+
+.orbit-dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 2px;
+  border-radius: 2px;
+  background: #8cdcff;
+  box-shadow: 0 0 10px #3d9eff, 0 0 2px #e0f7ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow, .ambient-blob { animation: none; }
+}
