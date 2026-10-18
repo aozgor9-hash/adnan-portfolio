@@ -13,7 +13,8 @@ export default function MusicToggle() {
 
   const on = state === 'on';
   const label =
-    state === 'missing' ? 'Müzik dosyası eklenmedi' : on ? `Müziği kapat · ${music.title}` : `Müziği aç · ${music.title}`;
+    state === 'missing' ? 'Müzik dosyası bulunamadı' : on ? 'Müziği kapat' : 'Müziği aç';
+  const caption = music.artist ? `${music.artist} — ${music.title}` : music.title;
 
   return (
     <div className="pointer-events-none fixed right-3 top-1/2 z-50 -translate-y-1/2 sm:right-5">
@@ -43,7 +44,7 @@ export default function MusicToggle() {
           ))}
         </span>
         <span className="hidden max-w-0 overflow-hidden whitespace-nowrap text-xs font-medium uppercase tracking-widest opacity-0 transition-all duration-300 group-hover:max-w-[220px] group-hover:opacity-100 group-focus-visible:max-w-[220px] group-focus-visible:opacity-100 sm:inline">
-          {state === 'missing' ? 'Müzik eklenmedi' : `${music.artist} — ${music.title}`}
+          {state === 'missing' ? 'Müzik bulunamadı' : caption}
         </span>
       </button>
     </div>
