@@ -59,13 +59,14 @@ export const tools: { name: string; icon?: string }[] = [
 ];
 
 /**
- * Arka plan müziği. Dosyayı `public/music/kerala.mp3` olarak koy.
+ * Arka plan müziği: `public/music/muzik.mp3` (telifsiz parça).
  * Ziyaretçi sağdaki müzik butonuna basınca döngüde çalar.
+ * Parçayı değiştirmek için dosyayı aynı adla değiştirmen yeterli.
+ * `artist` doluysa butonun üstünde "Sanatçı — Parça" olarak görünür.
  */
-export const music = {
-  src: '/music/kerala.mp3',
-  title: 'Kerala',
-  artist: 'Bonobo',
+export const music: { src: string; title: string; artist?: string } = {
+  src: 'music/muzik.mp3',
+  title: 'Arka plan müziği',
 };
 
 /** İletişim bilgileri */
